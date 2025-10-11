@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>$ Terminal Portfolio - Samuel Ampeau</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script>
+        (function(){
+            try{
+                var t=localStorage.getItem('portfolio-theme');
+                var v=(t==='light'||t==='dark')?t:'dark';
+                document.documentElement.setAttribute('data-theme', v);
+            }catch(e){
+                document.documentElement.setAttribute('data-theme','dark');
+            }
+        })();
+    </script>
+</head>
+<body>
+    <!-- Écran de chargement -->
+    <div class="loading-screen" id="loading-screen">
+        <div class="loading-content">
+            <div class="loading-text">
+                <div class="loading-line">Initializing terminal...</div>
+                <div class="loading-line">Loading portfolio data...</div>
+                <div class="loading-line">Connecting to server...</div>
+                <div class="loading-line">Ready!</div>
+            </div>
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+                <div class="progress-text">
+                    <span id="progress-percentage">0%</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Terminal -->
+    <div class="terminal-container" id="terminal-container">
+        <div class="terminal-header">
+            <div class="terminal-buttons">
+                <span class="btn close"></span>
+                <span class="btn minimize"></span>
+                <span class="btn maximize"></span>
+            </div>
+            <div class="terminal-title">
+                <span>[TERMINAL] ~/portfolio</span>
+            </div>
+        </div>
+        
+        <div class="terminal-body">
+            <div class="terminal-output" id="terminal-output">
+                <div class="line system-info">Last login: <span id="current-date"></span> on ttys001</div>
+                <div class="line empty-line"></div>
+                <div class="line ascii-art">   ____            _    __       _ _       
+  |  _ \ ___  _ __| |_ / _| ___ | (_) ___  
+  | |_) / _ \| '__| __| |_ / _ \| | |/ _ \ 
+  |  __/ (_) | |  | |_|  _| (_) | | | (_) |
+  |_|   \___/|_|   \__|_|  \___/|_|_|\___/ 
+                                          
+             === TERMINAL MODE ===</div>
+                <div class="line empty-line"></div>
+                <div class="line system-info welcome-message text-success">Welcome to my interactive portfolio!</div>
+                <div class="line empty-line"></div>
+                <div class="line system-info">Type <span class="text-warning">'help'</span> to see available commands.</div>
+                <div class="line empty-line"></div>
+            </div>
+            
+            <div class="terminal-input-line">
+                <span class="terminal-prompt">
+                    <span class="user">user</span><span class="at">@</span><span class="host">portfolio</span><span class="colon">:</span><span class="path">~</span><span class="dollar">$</span>
+                </span>
+                <input type="text" id="terminal-input" class="terminal-input" autocomplete="off" spellcheck="false" autofocus>
+                <span class="cursor">│</span>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
