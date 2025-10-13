@@ -31,6 +31,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+
 }
 
 /* === Corps de page === */
@@ -41,8 +42,9 @@ body {
     line-height: 1.6;
     height: 100vh;
     overflow: hidden;
-    font-size: 14px;
-    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><defs><filter id="glow"><feGaussianBlur stdDeviation="2" result="coloredBlur"/><feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><circle cx="10" cy="10" r="6" fill="%233fb950" stroke="%232d7a3d" stroke-width="1" filter="url(%23glow)"/><circle cx="10" cy="10" r="2" fill="%2359ff7a" opacity="0.8"/></svg>') 10 10, auto;
+    font-size: 14px;    
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><defs><filter id="glow"><feGaussianBlur stdDeviation="2" result="coloredBlur"/><feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><circle cx="10" cy="10" r="6" fill="%233fb950" stroke="%232d7a3d" stroke-width="1" filter="url(%23glow)"/><circle cx="10" cy="10" r="2" fill="%2359ff7a" opacity="0.8"/></svg>') 10 10, text;
+
 }
 
 /* === Écran de chargement === */
@@ -211,9 +213,7 @@ body {
 .terminal-output {
     flex: 1;
     margin-bottom: 20px;
-    user-select: text;
-    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><defs><filter id="glow"><feGaussianBlur stdDeviation="2" result="coloredBlur"/><feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><circle cx="10" cy="10" r="6" fill="%233fb950" stroke="%232d7a3d" stroke-width="1" filter="url(%23glow)"/><circle cx="10" cy="10" r="2" fill="%2359ff7a" opacity="0.8"/></svg>') 10 10, text;
-}
+    user-select: text;}
 
 /* === Lignes === */
 .line {
@@ -224,13 +224,7 @@ body {
     user-select: text;
 }
 
-.line.ls-output {
-    white-space: pre-wrap;
-    word-wrap: break-word;
-    text-align: left;
-}
-
-.line.tree-output {
+.line.terminal {
     white-space: pre-wrap;
     word-wrap: break-word;
     text-align: left;

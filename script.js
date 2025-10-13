@@ -26,7 +26,6 @@ class TerminalPortfolio {
         this.isTyping = false;
         this.autoScroll = true;
         this.userScrolledUp = false;
-        
         this.init();
     }
     
@@ -167,7 +166,7 @@ class TerminalPortfolio {
         this.commandHistory.push(input);
         this.historyIndex = this.commandHistory.length;
         
-        this.addLine(`<span class="user">user</span><span class="at">@</span><span class="host">portfolio</span><span class="colon">:</span><span class="path">${this.currentPath}</span><span class="dollar">$</span> ${input}`);
+        this.addLine(`<span class="user">sam</span><span class="at">@</span><span class="host">portfolio</span><span class="colon">:</span><span class="path">${this.currentPath}</span><span class="dollar">$</span> ${input}`);
         
         this.executeCommand(input);
         
@@ -356,15 +355,15 @@ drwxr-xr-x  2 user user 4096 Oct 11 2025 <span class="text-info">experience/</sp
 -rw-r--r--  1 user user 1024 Oct 11 2025 <span class="text-success">README.md</span>
 -rw-r--r--  1 user user  256 Oct 11 2025 <span class="text-success">contact.txt</span>
 -rw-r--r--  1 user user  512 Oct 11 2025 <span class="text-warning">cv.pdf</span>`;
-        this.addLine(files, 'ls-output');
+        this.addLine(files, 'terminal');
     }
     
     showCurrentPath() {
-        this.addLine(`/home/user/portfolio`);
+        this.addLine(`/home/Samuel_Ampeau/portfolio`);
     }
     
     showUser() {
-        this.addLine(`user`);
+        this.addLine(`Samuel_Ampeau`);
     }
     
     showDate() {
@@ -396,13 +395,13 @@ Bienvenue dans mon portfolio interactif !
 - experience: Mon parcours professionnel
 - contact: Me contacter
 
-Bonne exploration ! 🚀`);
+Bonne exploration ! 🚀`, 'terminal');
                 break;
             case 'contact.txt':
-                this.addLine(`Email: votre.email@example.com
-LinkedIn: linkedin.com/in/votre-profil
-GitHub: github.com/votre-username
-Téléphone: +33 6 12 34 56 78`);
+                this.addLine(`Email: samuel@ampeau.fr
+LinkedIn:  <span class="text-info"><a href="https://www.linkedin.com/in/samuel-ampeau-2b1a4a358/" target="_blank" rel="noopener noreferrer">https://www.linkedin.com/in/samuel-ampeau-2b1a4a358/</a></span>
+GitHub:  <span class="text-info"><a href="https://github.com/NotSayk" target="_blank" rel="noopener noreferrer">https://github.com/NotSayk</a></span>
+`, 'terminal');
                 break;
             default:
                 this.addLine(`cat: ${args[0]}: No such file or directory`, 'text-error');
@@ -411,7 +410,7 @@ Téléphone: +33 6 12 34 56 78`);
     
     showSystemInfo() {
         const neofetchText = `
-<span class="text-info">                    user@portfolio</span>
+<span class="text-info">                    sam@portfolio</span>
 <span class="text-info">                    ---------------</span>
 <span class="text-success">OS:</span> Portfolio Linux 1.0
 <span class="text-success">Host:</span> GitHub Pages
@@ -423,7 +422,7 @@ Téléphone: +33 6 12 34 56 78`);
 <span class="text-success">Terminal:</span> Portfolio Terminal v1.0
 <span class="text-success">CPU:</span> JavaScript V8 Engine
 <span class="text-success">Memory:</span> ${navigator.deviceMemory || 'Unknown'} GB`;
-        this.addLine(neofetchText);
+        this.addLine(neofetchText,'terminal');
     }
     
     showTree() {
@@ -453,7 +452,7 @@ Téléphone: +33 6 12 34 56 78`);
 ├── <span class="text-success">README.md</span>
 ├── <span class="text-success">contact.txt</span>
 └── <span class="text-warning">cv.pdf</span>`;
-        this.addLine(treeText, 'tree-output');
+        this.addLine(treeText, 'terminal');
     }
     
     showHistory() {
@@ -519,6 +518,7 @@ Téléphone: +33 6 12 34 56 78`);
         const input = this.terminalInput.value.toLowerCase();
         const matches = Object.keys(this.commands).filter(cmd => cmd.startsWith(input));
         
+        if (this.terminalInput.value === '' || matches.length === 0) return;
         if (matches.length === 1) {
             this.terminalInput.value = matches[0];
         } else if (matches.length > 1) {
