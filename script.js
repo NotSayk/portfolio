@@ -17,7 +17,8 @@ class TerminalPortfolio {
             neofetch: this.showSystemInfo.bind(this),
             tree: this.showTree.bind(this),
             history: this.showHistory.bind(this),
-            theme: this.toggleTheme.bind(this)
+            theme: this.toggleTheme.bind(this),
+            snake: this.launchSnake.bind(this)
         };
         
         this.commandHistory = [];
@@ -461,9 +462,11 @@ GitHub:  <span class="text-info"><a href="https://github.com/NotSayk" target="_b
         });
     }
     
-    clearTerminal() {
+    clearTerminal(msg=true) {
         this.terminalOutput.innerHTML = '';
-        this.addLine('[SYSTEM] Terminal cleared.', 'text-success');
+        if (msg) {
+            this.addLine('[SYSTEM] Terminal cleared.', 'text-success');
+        }
         this.autoScroll = true;
         this.userScrolledUp = false;
     }
@@ -571,6 +574,21 @@ GitHub:  <span class="text-info"><a href="https://github.com/NotSayk" target="_b
         const current = document.documentElement.getAttribute('data-theme') || 'dark';
         const next = current === 'dark' ? 'light' : 'dark';
         this.setTheme(next);
+    }
+    // Launch snake in terminal
+    launchSnake() {
+        this.clearTerminal(false);
+        this.addLine('Launching Snake game...', 'text-info');
+        this.addLine("<canvas id=\"gameCanvas\" width=\"400\" height=\"400\" style=\"border:1px solid #000000;\"></canvas>", 'terminal');
+        this.addLine('Use arrow keys to control the snake. Eat the red food to grow. Avoid walls and yourself!', 'text-info');
+        this.addLine('Use Ctrl + C to stop the game.', 'text-info');
+        const script = document.createElement('script');
+        script.src = 'snake.js';        
+        document.body.appendChild(script);
+        this.terminalInput.disabled = true;
+        setTimeout(() => {
+            this.addLine('Snake game launched!', 'text-success');
+        }, 1000);
     }
 }
 
